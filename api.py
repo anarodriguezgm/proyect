@@ -2,7 +2,7 @@
 from flask import Flask
 from flask_restplus import Api, Resource, fields
 from sklearn.externals import joblib
-##from m09_model_deployment import predict_price
+from m09_model_deployment import predict_price
 
 app = Flask(__name__)
 
@@ -55,8 +55,7 @@ class PricingApi(Resource):
         args = parser.parse_args()
         
         return {
-                print('OK')
-                ##"result": predict_price(args['Año','Kilometraje','Estado','Modelo'])
+                "result": predict_price(args['Año','Kilometraje','Estado','Modelo'])
         }, 200
     
     
