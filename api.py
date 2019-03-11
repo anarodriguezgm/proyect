@@ -2,7 +2,7 @@
 from flask import Flask
 from flask_restplus import Api, Resource, fields
 from sklearn.externals import joblib
-from m09_model_deployment import predict_price
+##from m09_model_deployment import predict_price
 
 app = Flask(__name__)
 
@@ -22,14 +22,20 @@ parser.add_argument(
     type=int, 
     required=True, 
     help='Año del modelo: 1997 a 2018', 
+    location='args')
+parser.add_argument(    
     'Kilometraje', 
     type=int, 
     required=True, 
     help='Kms recorridos: 5 a 2.457.832',
+    location='args')
+parser.add_argument(  
     'Estado', 
     type=str, 
     required=True, 
     help='2 letras del nombre del estado.',
+    location='args')
+parser.add_argument(  
     'Modelo', 
     type=str, 
     required=True, 
@@ -49,8 +55,8 @@ class PricingApi(Resource):
         args = parser.parse_args()
         
         return {
-                "result":print('Año','Kilometraje','Estado','Modelo')
-         ##"result": predict_price(args['Año','Kilometraje','Estado','Modelo'])
+                print('OK')
+                ##"result": predict_price(args['Año','Kilometraje','Estado','Modelo'])
         }, 200
     
     
